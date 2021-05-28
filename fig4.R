@@ -23,9 +23,9 @@ for(tau in taus){
       mu<-X0%*%beta
       e<-rnorm(n)*sqrt(sigma2) 
 
-      PR1<-FABRegPredict(1*mu+e,X0,X0,Psi=diag(p)*sigma2/tau^2,
+      PR1<-FABlmPredict(1*mu+e,X0,X0,Psi=diag(p)*sigma2/tau^2,
                          sigmasplit=TRUE,alpha=alpha) 
-      PR2<-FABRegPredict(2*mu+e,X0,X0,Psi=diag(p)*sigma2/tau^2,
+      PR2<-FABlmPredict(2*mu+e,X0,X0,Psi=diag(p)*sigma2/tau^2,
                          sigmasplit=TRUE,alpha=alpha)  
       fres1<-c(fres1,mean(PR1$FAB[,2]-PR1$FAB[,1]))
       fres2<-c(fres2,mean(PR2$FAB[,2]-PR2$FAB[,1]))
@@ -57,7 +57,7 @@ frisk2mc<-apply(FRES2,2,mean)
 frisk1<-smooth.spline(taus,isoreg(taus,frisk1mc)$yf,nknots=5)$y
 frisk2<-smooth.spline(taus,isoreg(taus,frisk2mc)$yf,nknots=5)$y
 
-pdf("lmrisk.pdf",height=3,width=6,family="Times") 
+pdf("fig4.pdf",height=3,width=6,family="Times") 
 par(mar=c(3,3,1,1),mgp=c(1.75,.75,0))
 plot(taus,frisk1,type="l",lwd=3,ylim=range(c(frisk1,frisk2)),
      xlab=expression(tau),ylab="average Bayes risk",col=gray(.5))

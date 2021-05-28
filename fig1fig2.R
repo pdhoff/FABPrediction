@@ -60,7 +60,7 @@ for(r in seq(0,4,length=100)){
   V1<-rbind(V1,c(lambda,r, diff(pyx))) 
 }}
 
-pdf("prZp1.pdf",height=4,width=8,family="Times")
+pdf("fig1.pdf",height=4,width=8,family="Times")
 par(mfrow=c(1,2),mar=c(3,3,1,1),mgp=c(1.75,.75,0))
 plot(range(xs),range(c(PYXF,PYX0)),type="n",xlab=expression(italic(x)),
      ylab="interval endpoints") 
@@ -105,7 +105,7 @@ for(r in seq(0,4,length=100)){
   V2<-rbind(V2,c(lambda,r,pyx$vol)) 
 }}
 
-pdf("prZp2.pdf",height=4,width=8,family="Times")
+pdf("fig2.pdf",height=4,width=8,family="Times")
 par(mfrow=c(1,2),mar=c(3,3,1,1),mgp=c(1.75,.75,0))
 plot(c(-4,7),c(-3.75,7),
      type="n",xlab=expression(italic(x)[1]),ylab=expression(italic(x)[2]))     

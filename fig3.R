@@ -5,7 +5,7 @@ source("FABmvnPredict.R")
 k<-1 ; alpha<-.1 ;lambdas<-c(.1,1,10,100) ; nmc<-1000
 
 ## p=1
-try(load("riskResults.rdata"),silent=TRUE)
+try(load("mvnSim.rdata"),silent=TRUE)
 if(!exists("V1")){ 
 p<-1 ; sigma<-1 ; mu<-0 
 
@@ -52,7 +52,7 @@ rtheta2<-as.numeric(rownames(V2M))
 V2S<-apply(V2M,2,function(y){ lm(y~poly(rtheta2,3))$fitted } ) 
 
 
-pdf("zrisk.pdf",height=4,width=8,family="Times") 
+pdf("fig3.pdf",height=4,width=8,family="Times") 
 
 par(mfrow=c(1,2),mar=c(3,3,1,1),mgp=c(1.75,.75,0))
 
@@ -87,5 +87,5 @@ legend=c(
 
 dev.off()
 
-save(V1,V2,file="riskResults.rdata") 
+save(V1,V2,file="mvnSim.rdata") 
 

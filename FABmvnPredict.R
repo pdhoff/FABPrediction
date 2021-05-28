@@ -1,6 +1,12 @@
 ## critical points for optimal statistic
 qX<-function(x,y,iSh,k,mu,lambda,alpha=.05){ 
-
+  # x observed value
+  # y candidate predicted value 
+  # iSh inverse square root of covariance matrix 
+  # k scale for variance of x 
+  # mu prior mean of theta
+  # lambda scale for prior variance of theta
+  # alpha error rate
   z<-(x+k*y)/(1+k) 
   vxz<-k^2/(k+1) 
   b<-iSh%*%(mu-z)*sqrt(k+1)/(lambda*(1+1/k)+1)
@@ -21,6 +27,12 @@ pcheck<-function(y,x,iSh,k,mu,lambda,alpha=.05){
 
 ## p=1 prediction region 
 predZR1<-function(x,sigma,k,mu,lambda,alpha=.05){  
+  # x observed value 
+  # sigma standard deviation of Y
+  # k k*sigma^2 is variance of x 
+  # mu prior mean of theta 
+  # lambda lambda*sigma^2 is prior variance of theta  
+  # alpha error rate 
 
   ## setup
   vinf<-k+1 
@@ -51,6 +63,14 @@ predZR1<-function(x,sigma,k,mu,lambda,alpha=.05){
 ## p=2 prediction region
 predZR2<-function(x,iSh,k,mu,lambda,alpha=.05,nch=100){  
 
+  # x observed value 
+  # iSh inverse square root of covariance of Y
+  # k k*Sigma is variance of x 
+  # mu prior mean of theta 
+  # lambda lambda*Sigma is prior variance of theta  
+  # alpha error rate 
+
+ 
   ## setup
   vinf<-k+1 
   vlam<-1+1/(1/lambda+1/k) 

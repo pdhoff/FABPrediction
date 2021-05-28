@@ -1,5 +1,6 @@
 sigmasplit<-function(y,X,dfsplit=3/4){
 
+  # split RSS to obtain two independent estimates of sigma^2
   G<-MASS::Null(X)
   e<-t(G)%*%y   
   df0<-round((nrow(X)-ncol(X))*dfsplit)
@@ -12,7 +13,7 @@ sigmasplit<-function(y,X,dfsplit=3/4){
 
 
 
-FABRegPredict<-function(y0,X0,X1,Psi=diag(1/sigmadelta^2,nrow=ncol(X0)),
+FABlmPredict<-function(y0,X0,X1,Psi=diag(1/sigmadelta^2,nrow=ncol(X0)),
    sigma=sqrt( sum(lm(y0~-1+X0)$res^2)/(nrow(X0)-ncol(X0))), 
    df=nrow(X0)-ncol(X0),
    sigmadelta=1,
